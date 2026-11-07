@@ -65,8 +65,8 @@ function grid(L){const me=RUN,N=4+L,[lo,hi]=[[62,80],[44,64],[28,44]][L-1],ref=[
  next()})}
 
 function trace(rad,sp,jit,n,mir){const me=RUN;return new Promise(r=>{
- A.innerHTML='<div class="hud"><div class="cnt">0%</div><div class="bar"><i></i></div></div><div class="tr wait"></div>'+'<div class="tr"></div>'.repeat(n-1)+`<div class="msg">CLICK THE ${n>1?'PINK ':''}BALL TO START</div><b class="pt"></b>`;
- const pt=A.querySelector('.pt'),B=[...A.querySelectorAll('.tr')],c=A.querySelector('.cnt'),bi=A.querySelector('i'),msg=A.querySelector('.msg'),ph=B.map(()=>[0,1,2,3].map(()=>RND()*6.28)),D=6000,W=A.clientWidth,H=A.clientHeight;
+ A.innerHTML='<div class="tr wait"></div>'+'<div class="tr"></div>'.repeat(n-1)+`<div class="msg">CLICK THE ${n>1?'PINK ':''}BALL TO START</div><b class="pt"></b><div class="cnt">0%</div><div class="bar"><i></i></div>`;
+ const pt=A.querySelector('.pt'),B=[...A.querySelectorAll('.tr')],c=A.querySelector('.cnt'),bi=A.querySelector('.bar i'),msg=A.querySelector('.msg'),ph=B.map(()=>[0,1,2,3].map(()=>RND()*6.28)),D=6000,W=A.clientWidth,H=A.clientHeight;
  B.forEach(b=>b.style.width=b.style.height=rad*2+'px');if(n>1)B[0].classList.add('me');
  let px=-999,py=-999,inT=0,was=false,t0=0,last=0,hl=n>1;
  const F=(q,t)=>[Math.sin(t+q[0])*W*.3+Math.sin(t*2.1+q[1])*W*.07*jit,Math.sin(t*1.3+q[2])*H*.3+Math.cos(t*2.7+q[3])*H*.07*jit],
@@ -84,7 +84,6 @@ function trace(rad,sp,jit,n,mir){const me=RUN;return new Promise(r=>{
    const p=(now-t0)/D;bi.style.height=(100-p*100)+'%';c.textContent=Math.round(inT/(now-t0)*100)+'%';
    if(p>=1){A.onpointermove=A.onpointerdown=null;const pc=inT/D;sfx.win();r({score:sc(pc/.85),d:Math.round(pc*100)+'% of time locked on'})}else requestAnimationFrame(f)})()};
  A.onpointerdown=e=>{if(t0)return;upd(e);const[dx,dy]=dot(),[x,y]=pos(0,0);if(Math.hypot(dx-x,dy-y)<rad+9)go();else{sfx.bad();msg.textContent='CLICK DIRECTLY ON THE '+(n>1?'PINK ':'')+'BALL'}}})}
-
 const RY=[[[1,1,1],[1,1,1,1]],[[1.3,1.05,.8,.6],[.6,.8,1.05,1.3],[1,.5,.5,1]],[[1,.5,.5,1,.5],[.75,.75,1.5,.75,.75],[1,.5,1,.5,1],[.5,.5,1,.5,.5]]];
 function sync(type,L){const me=RUN;return new Promise(r=>{
  const pat=RY[L-1][Math.floor(RND()*RY[L-1].length)],nb=pat.length,b=[600,520,460][L-1]*(.95+RND()*.1),bt=pat.reduce((a,g,i)=>(i<nb-1&&a.push(a[i]+g*b),a),[0]),dir=RND()<.5?1:-1,bd=[2800,2400,2100][L-1]*(.9+RND()*.2),z=.55+RND()*.3,zp=dir>0?z:1-z,hid=(L-1)*.12,T=type==='bar'?z*bd:type==='ring'?[1600,1250,950][L-1]*(.92+RND()*.16):bt[nb-1]+pat[nb-1]*b;
