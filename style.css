@@ -1,0 +1,162 @@
+:root {
+  --bg-color: #0b0d14;
+  --panel-bg: #141724;
+  --accent-cyan: #00f0ff;
+  --accent-green: #00ff66;
+  --accent-red: #ff0055;
+  --accent-yellow: #ffaa00;
+  --text-main: #f0f4f8;
+  --text-muted: #8a99ad;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 500px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+header h1 {
+  font-size: 2rem;
+  letter-spacing: 2px;
+}
+
+header h1 span { color: var(--accent-cyan); }
+.subtitle { color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; }
+
+/* Gestione Visibilità Schermate */
+.screen { display: flex; flex-direction: column; gap: 16px; }
+.hidden { display: none !important; }
+
+/* Menu & Daily Banner */
+.daily-banner {
+  background: var(--panel-bg);
+  border: 1px solid #2a3045;
+  border-radius: 12px;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+}
+#streak-tag { color: var(--accent-yellow); font-weight: bold; }
+
+/* Cards dei 3 Giochi */
+.games-grid { display: flex; flex-direction: column; gap: 14px; }
+
+.game-card {
+  background: var(--panel-bg);
+  border: 1px solid #2a3045;
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card-header { display: flex; justify-content: space-between; align-items: center; }
+.badge {
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: #2a3045;
+  color: var(--text-muted);
+}
+.badge.completed { background: rgba(0, 255, 102, 0.15); color: var(--accent-green); }
+
+.game-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.3; }
+
+/* Game Arena */
+.game-header { display: flex; align-items: center; gap: 16px; }
+.btn-icon { background: none; border: 1px solid #2a3045; color: var(--text-main); padding: 6px 12px; border-radius: 8px; cursor: pointer; }
+
+#game-arena {
+  height: 280px;
+  border-radius: 16px;
+  border: 2px solid #2a3045;
+  background: var(--panel-bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Stili specifici per i giochi */
+.arena-clash-waiting { background: var(--accent-yellow) !important; color: #111; }
+.arena-clash-ready { background: var(--accent-green) !important; color: #111; }
+.arena-error { background: var(--accent-red) !important; color: #fff; }
+
+/* Griglia 3x3 per PULSE */
+.pulse-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  width: 80%;
+  height: 80%;
+}
+.pulse-node {
+  background: #2a3045;
+  border-radius: 12px;
+  transition: background 0.1s;
+}
+.pulse-node.active {
+  background: var(--accent-cyan);
+  box-shadow: 0 0 15px var(--accent-cyan);
+}
+
+/* Anello per DEFLECT */
+.deflect-target {
+  width: 60px;
+  height: 60px;
+  border: 4px solid var(--accent-cyan);
+  border-radius: 50%;
+  position: absolute;
+}
+.deflect-ring {
+  border: 3px solid var(--accent-yellow);
+  border-radius: 50%;
+  position: absolute;
+}
+
+/* Statistiche & Pulsanti */
+.stats-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.stat-box { background: var(--panel-bg); border: 1px solid #2a3045; padding: 12px; border-radius: 10px; text-align: center; }
+.stat-label { font-size: 0.75rem; color: var(--text-muted); display: block; }
+.stat-value { font-size: 1.1rem; font-weight: bold; color: var(--accent-cyan); }
+
+.btn {
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: #2a3045;
+  color: var(--text-main);
+  font-weight: bold;
+  cursor: pointer;
+}
+.btn-play { background: var(--accent-cyan); color: #000; }
+.btn-accent { background: var(--accent-green); color: #000; width: 100%; }
+.btn:disabled { opacity: 0.3; cursor: not-allowed; }

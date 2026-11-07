@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEXUS REFLEX - Daily Arena</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <header>
+      <h1>NEXUS<span>REFLEX</span></h1>
+      <p class="subtitle">Daily Speed & Precision Arena</p>
+    </header>
+
+    <!-- SCHERMATA 1: MENU DI SELEZIONE / HOME -->
+    <section id="menu-screen" class="screen">
+      <div class="daily-banner">
+        <span>SFIDA GIORNALIERA</span>
+        <strong id="daily-date">YYYY-MM-DD</strong>
+        <div id="streak-tag">Streak: 0 🔥</div>
+      </div>
+
+      <div class="games-grid">
+        <!-- Card Gioco 1 -->
+        <div class="game-card" data-game="clash">
+          <div class="card-header">
+            <h3>⚡ CLASH</h3>
+            <span class="badge" id="status-clash">Libero</span>
+          </div>
+          <p>Duello di reazione pura al millisecondo. Clicca appena lo schermo diventa verde.</p>
+          <button class="btn btn-play">Gioca CLASH</button>
+        </div>
+
+        <!-- Card Gioco 2 -->
+        <div class="game-card" data-game="deflect">
+          <div class="card-header">
+            <h3>🛡️ DEFLECT</h3>
+            <span class="badge" id="status-deflect">Libero</span>
+          </div>
+          <p>Parry di precisione. Intercetta l'anello nel frame esatto di sovrapposizione.</p>
+          <button class="btn btn-play">Gioca DEFLECT</button>
+        </div>
+
+        <!-- Card Gioco 3 -->
+        <div class="game-card" data-game="pulse">
+          <div class="card-header">
+            <h3>🎯 PULSE</h3>
+            <span class="badge" id="status-pulse">Libero</span>
+          </div>
+          <p>Matrix tap su griglia 3x3. Tocca i nodi neon nell'ordine esatto di comparsa.</p>
+          <button class="btn btn-play">Gioca PULSE</button>
+        </div>
+      </div>
+
+      <div class="action-panel">
+        <button id="share-all-btn" class="btn btn-accent" disabled>Condividi Risultati Giornalieri 🚀</button>
+      </div>
+    </section>
+
+    <!-- SCHERMATA 2: ARENA DI GIOCO DINAMICA -->
+    <section id="game-screen" class="screen hidden">
+      <div class="game-header">
+        <button id="back-to-menu" class="btn-icon">← Menu</button>
+        <h2 id="current-game-title">TITOLO GIOCO</h2>
+      </div>
+
+      <!-- Area Interattiva generica -->
+      <div id="game-arena" class="arena-idle">
+        <!-- Renderizzato dinamicamente da JS a seconda del gioco -->
+      </div>
+
+      <!-- Pannello Statistiche del gioco corrente -->
+      <div class="stats-panel">
+        <div class="stat-box">
+          <span class="stat-label">Stato</span>
+          <span id="game-status-text" class="stat-value">Pronto</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-label">Risultato</span>
+          <span id="game-score-text" class="stat-value">---</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
